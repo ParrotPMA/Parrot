@@ -7,7 +7,7 @@ import HomeScreen from "./pages/HomeScreen/HomeScreen";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeScreen id="Home Screen" />,
+    element: <HomeScreen />,
   },
 ]);
 

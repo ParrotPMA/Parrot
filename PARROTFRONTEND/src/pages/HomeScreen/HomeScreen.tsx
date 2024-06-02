@@ -1,13 +1,19 @@
-import React from "react";
-interface HomeScreenProps {
-  id: string;
-}
+import React, {useEffect, useState} from "react";
+import WelcomeLoader from "../../components/WelcomeLoader.tsx";
 
-const HomeScreen: React.FC<HomeScreenProps> = ({ id }) => {
+const HomeScreen: React.FC = () => {
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(()=>{
+        setTimeout(()=>{
+            setIsLoading(false)
+        },3000)
+    },[])
+    if (isLoading) {
+    return <WelcomeLoader  />;
+  }
   return (
-      <div className="flex flex-row justify-center items-center bg-blue md:bg-red-500 lg:bg-amber-500">
-          <text className="text-lg text-red-700 ">{id}</text>
-          <text className="text-lg text-red-700 ">abhi</text>
+      <div className="flex flex-col justify-center items-center bg-black">
+          <p className="text-4xl text-center text-amber-600"> Home screen</p>
       </div>
   );
 };
