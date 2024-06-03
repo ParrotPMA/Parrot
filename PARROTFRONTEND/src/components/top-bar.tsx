@@ -22,7 +22,7 @@ export const TopBar = () => {
   };
 
   return (
-    <div className='flex flex-col md:flex-row justify-between items-center w-full px-7 pt-6'>
+    <div className='flex flex-col md:flex-row justify-between items-center w-full px-7 pt-6 bg-[#F5F5F5] h-20 pb-5'>
       <div className='flex items-center mb-4 md:mb-0'>
         <img src={trello} height={40} width={40} alt='trello-logo' className='pr-2'/>
         <p className='font-bold text-3xl text-[#007AC0] font-serif'>Trello</p>
