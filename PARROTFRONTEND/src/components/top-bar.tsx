@@ -2,7 +2,7 @@ import trello from '../assets/images/trello-icon.png'
 import { DropDown } from './dropdown'
 
 const dropdownLists: string[] = ["Workspace", "Recent", "Starred", "Templates"]
-// testing github webhook
+
 export const TopBar = () => {
   return (
     <div className='flex justify-center items-center w-full px-7 pt-6'>
