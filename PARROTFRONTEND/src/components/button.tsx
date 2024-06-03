@@ -8,7 +8,7 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ className, title, image }) => {
   return (
-    <div className={`bg-[#00C2E0] h-9 flex items-center justify-center rounded-md w-full ${className}`}>
+    <div className={`bg-[#00C2E0] h-9 flex items-center justify-center rounded-md ${className}`}>
         {image && <img src={image} alt="" className='h-6 w-6 flex' />}
         <button className="text-white">{title}</button>
     </div>
