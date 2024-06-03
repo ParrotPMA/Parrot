@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../public/assets/logo.png";
+import Logo from "../assets/logo.png";
 
 const WelcomeLoader: React.FC = () => {
   return (
