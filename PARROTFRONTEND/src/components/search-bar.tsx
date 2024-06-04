@@ -22,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         value={query}
         onChange={handleInputChange}
         placeholder="Search"
-        className="pl-4 border border-[#D9D9D9] rounded-3xl h-9 focus:outline-none focus:ring-gray-500"
+        className="pl-4 border border-[#D9D9D9] rounded-md h-9 focus:outline-none focus:ring-gray-500"
       />
     </div>
   );
