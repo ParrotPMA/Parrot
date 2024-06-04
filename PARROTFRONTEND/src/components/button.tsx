@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ButtonProps {
+type ButtonProps = {
   className?: string;
   title?: string;
   image1?: string;
@@ -12,8 +12,8 @@ export const Button: React.FC<ButtonProps> = ({ className, title, image1, image2
   return (
     <div className={`${isIconButton ? 'bg-white' : `bg-[#388BFF] h-12 flex items-center justify-center rounded-sm ${className}`}`}>
       {isIconButton && <img src={image1} className='h-5 w-5 hover:cursor-pointer'/>}
-        {image2 && !isIconButton && <img src={image2} alt="" className='h-6 w-6 flex'/>}
-        {!isIconButton && <button className="text-white">{title}</button>}
+        {image2 && !isIconButton && <img src={image2} alt="" className='h-4 w-4 flex'/>}
+        {!isIconButton && <button className="text-white pl-2 font-medium">{title}</button>}
     </div>
   );
 };
