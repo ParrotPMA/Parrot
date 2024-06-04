@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import HomeScreen from "./pages/HomeScreen/HomeScreen";
+import Layout from "./components/layout";
+import { RecentlyViewed } from "./components/recently-viewed";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeScreen id="Home Screen" />,
+    element: <Layout/>,
   },
 ]);
 
