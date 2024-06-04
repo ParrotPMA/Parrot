@@ -1,11 +1,13 @@
 // src/top-bar.tsx
 
-import React, { useState } from 'react';
-import trello from '../assets/images/trello-icon.png';
+import { useState } from 'react';
+import trello from '../assets/images/trello.png';
 import { DropDown } from './dropdown';
 import SearchBar from './search-bar';
 import { Button } from './button';
-import workspacePremium from '../assets/images/workspace_premium.png';
+import bell from '../assets/images/bell.png';
+import info from '../assets/images/info.png';
+import user from '../assets/images/user.png';
 
 const dropdownLists: string[] = ["Workspace", "Recent", "Starred", "Templates"];
 
@@ -22,18 +24,20 @@ export const TopBar = () => {
   };
 
   return (
-    <div className='flex flex-col md:flex-row justify-between items-center w-full px-7 pt-6 bg-[#F5F5F5] h-20 pb-5'>
+    <div className='flex flex-col md:flex-row justify-between items-center w-full px-7 pt-6 bg-[#F5F5F5] h-12 pb-5'>
       <div className='flex items-center mb-4 md:mb-0'>
-        <img src={trello} height={40} width={40} alt='trello-logo' className='pr-2'/>
-        <p className='font-bold text-3xl text-[#007AC0] font-serif'>Trello</p>
+        <img src={trello} height={32} width={32} alt='trello-logo' className='pr-2'/>
+        <p className='font-extrabold text-xl font-custom'>Trello</p>
         {dropdownLists.map((item: string, index: number) => (
           <DropDown title={item} key={index}/>
         ))}
+        <Button className='w-20 font-normal h-8 ml-4' title='Create'/>
       </div>
       <div className='flex items-center space-x-4'>
         <SearchBar onSearch={handleSearch}/>
-        <Button className='w-20' title='Create' />
-        <Button className='w-36' title='Try Premium' image={workspacePremium} />
+        <Button isIconButton image1={bell} className='px-1'/>
+        <Button isIconButton image1={info} className='px-1'/>
+        <Button isIconButton image1={user} className='px-1'/>
       </div>
     </div>
   )
