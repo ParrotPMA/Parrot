@@ -23,6 +23,9 @@ const config: Config = {
         light_grey: "#D4D2D5",
         blue:  "#0057FF",
       },
+      fontFamily: {
+        custom: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Noto Sans"', 'Ubuntu', '"Droid Sans"', '"Helvetica Neue"', 'sans-serif'],
+      },
     },
   },
 
