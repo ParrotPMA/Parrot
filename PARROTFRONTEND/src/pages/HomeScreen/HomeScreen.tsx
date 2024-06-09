@@ -12,7 +12,7 @@ const HomeScreen: React.FC = () => {
     return <WelcomeLoader  />;
   }
   return (
-      <div className="flex flex-col justify-center items-center bg-black">
+      <div className="flex flex-col justify-center items-center bg-black h-screen w-screen">
           <p className="text-4xl text-center text-amber-600"> Home screen</p>
       </div>
   );
