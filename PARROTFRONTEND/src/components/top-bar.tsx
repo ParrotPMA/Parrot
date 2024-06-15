@@ -8,11 +8,13 @@ import { Button } from './button';
 import bell from '../assets/images/bell.png';
 import info from '../assets/images/info.png';
 import user from '../assets/images/user.png';
+import NotificationModal from './notification-modal';
 
 const dropdownLists: string[] = ["Workspace", "Recent", "Starred", "Templates"];
 
 export const TopBar = () => {
   const [, setSearchResults] = useState<string[]>([]);
+  const [isNotification, setIsNotification] = useState(false);
 
   // TODO: Update when api is available or backend is ready
   const handleSearch = (query: string): void => {
@@ -23,6 +25,9 @@ export const TopBar = () => {
     setSearchResults(filteredResults);
   };
 
+  const handleNotification = (newState: boolean) => {
+    setIsNotification(!newState);
+  }
   return (
     <div className='flex flex-col md:flex-row justify-between items-center w-full px-7 pt-6 bg-[#F5F5F5] h-12 pb-5'>
       <div className='flex items-center mb-4 md:mb-0'>
@@ -35,10 +40,11 @@ export const TopBar = () => {
       </div>
       <div className='flex items-center space-x-4'>
         <SearchBar onSearch={handleSearch}/>
-        <Button isIconButton image1={bell} className='px-1'/>
+        <Button isIconButton image1={bell} onStateChange={handleNotification} className='px-1'/>
         <Button isIconButton image1={info} className='px-1'/>
         <Button isIconButton image1={user} className='px-1'/>
       </div>
+      {isNotification && <NotificationModal/>}
     </div>
   )
 }
