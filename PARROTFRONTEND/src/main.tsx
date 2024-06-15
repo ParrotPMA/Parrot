@@ -4,12 +4,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Layout from "./components/layout";
 import { RecentlyViewed } from "./components/recently-viewed";
+import CustomKanban from "./components/Board";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout/>,
   },
+  {
+    path: "/kanban",
+    element: <CustomKanban/>,
+  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
