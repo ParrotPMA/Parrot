@@ -27,7 +27,7 @@ const handleImage = (index: string) => {
         <span>close</span>
       </div>
       <div className="self-center w-">
-        <WorkspaceTiles boardImage={image}/>
+        <WorkspaceTiles boardImage={image} isCustom={true}/>
       </div>
       <div className="flex flex-col justify-between item-center pt-4">
         <label className="text-xs font-bold">Background</label>
