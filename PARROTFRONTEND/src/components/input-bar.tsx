@@ -3,7 +3,7 @@ import React, { useState, ChangeEvent } from 'react';
 interface SearchBarProps {
   onSearch?: (query: string) => void;
   className?: string
-  isValue?: (data: boolean) => void;
+  isValue?: (data: string) => void;
 }
 
 const InputBar: React.FC<SearchBarProps> = ({ onSearch, className, isValue }) => {
@@ -14,7 +14,8 @@ const InputBar: React.FC<SearchBarProps> = ({ onSearch, className, isValue }) =>
     const newQuery = event.target.value;
     setQuery(newQuery);
     onSearch && onSearch(newQuery);
-    newQuery && isValue ? isValue(true) : isValue && isValue(false);
+    isValue && isValue(newQuery);
+    // newQuery && isValue ? isValue(true) : isValue && isValue(false);
   };
 
   return (

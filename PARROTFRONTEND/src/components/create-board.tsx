@@ -1,4 +1,4 @@
-import { WorkspaceTiles } from "./workspace-tiles";
+import WorkspaceTiles from "./test";
 import boardImage1 from '../assets/images/board-1.jpg'
 import boardImage2 from '../assets/images/board-2.jpg'
 import boardImage3 from '../assets/images/board-3.jpg'
@@ -7,17 +7,24 @@ import { TemplateSelector } from "./template-selector";
 import { useEffect, useState } from "react";
 import InputBar from "./input-bar";
 import { Button } from "./button";
+import { useItemsStore } from "../store/store";
 
-const CreateBoard = () => {
+interface CreateBoardProps {
+  handleCreateModalClose?: (data: boolean) => void;
+}
+
+const CreateBoard:React.FC<CreateBoardProps> = ( {handleCreateModalClose} ) => {
 const [image, setImage] = useState("");
 const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-const [isInputValue, setIsInputValue] = useState(false);
+const [isInputQuery, setIsInputQuery] = useState("");
+const [isClosed, setIsClosed] = useState(false);
+const { addItem } = useItemsStore();
 
 // TODO: Fix Create button enable or disable
 
 useEffect(() => {
-  isInputValue && setIsButtonEnabled(!isButtonEnabled);
-}, [isInputValue])
+  isInputQuery ? setIsButtonEnabled(true) : setIsButtonEnabled(false);
+}, [isInputQuery])
 
 const handleImage = (index: string) => {
   if(index == "1"){
@@ -30,6 +37,16 @@ const handleImage = (index: string) => {
     setImage(boardImage4);
   }
 }
+    
+const handleObject = () => {
+  const newObject = { title: isInputQuery, image: image };
+  addItem(newObject);
+}
+
+const handleClose = () => {
+  setIsClosed(true);
+  handleCreateModalClose && handleCreateModalClose(isClosed);
+}
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-25">
@@ -37,25 +54,25 @@ const handleImage = (index: string) => {
         <div className="flex justify-between">
           <span>back</span>
           <h2 className="text-sm font-semibold font-custom">Create board</h2>
-          <span>close</span>
+          <span className="cursor-pointer" onClick={handleClose}>close</span>
         </div>
-        <div className="self-center w-">
+        <div className="self-center">
           <WorkspaceTiles boardImage={image} isCustom={true}/>
         </div>
         <div className="flex flex-col justify-between item-center pt-4">
           <label className="text-xs font-bold">Background</label>
           <div className="flex justify-between">
             <div onClick={() => handleImage("1")}>
-              <TemplateSelector height="10" width="16" boardImage={boardImage1} />
+              <TemplateSelector boardImage={boardImage1} />
             </div>
             <div onClick={() => handleImage("2")}>
-              <TemplateSelector height="10" width="16" boardImage={boardImage2} />
+              <TemplateSelector boardImage={boardImage2} />
             </div>
             <div onClick={() => handleImage("3")}>
-              <TemplateSelector height="10" width="16" boardImage={boardImage3} />
+              <TemplateSelector boardImage={boardImage3} />
             </div>
             <div onClick={() => handleImage("4")}>
-              <TemplateSelector height="10" width="16" boardImage={boardImage4} />
+              <TemplateSelector boardImage={boardImage4} />
             </div>
           </div>
           <div className="flex flex-col pt-3">
@@ -63,13 +80,13 @@ const handleImage = (index: string) => {
               Board title
               <span className="text-red-500">*</span>
             </div>
-            <InputBar className="w-full rounded-sm border-2 mt-1" isValue={setIsInputValue}/>
+            <InputBar className="w-full rounded-sm border-2 mt-1" isValue={setIsInputQuery}/>
             <div className="flex">
               <span className="pr-2">👋</span>
               <p className="text-sm font-medium self-center">Board title is required</p>
             </div>
           </div>
-          <div className="pt-2">
+          <div className="pt-2" onClick={isButtonEnabled ? handleObject : undefined}>
             <Button title="Create" className="h-9" enabled={isButtonEnabled}/>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { WorkspaceTiles } from "./workspace-tiles"
+import WorkspaceTiles from "./workspace-tiles"
 import { WorkspaceTopBar } from "./workspace-topbar"
 
 export const YourWorkspace = () => {

@@ -40,6 +40,9 @@ export const TopBar = () => {
     setIsCreateBoardModal(!data);
     setIsCreateBoard(!isCreateBoard);
   }
+  const handleCreateModalClose = (data: boolean) => {
+    setIsCreateBoardModal(data);
+  }
 
   return (
     <div className='flex flex-col md:flex-row justify-between items-center w-full px-7 pt-6 bg-[#F5F5F5] h-12 pb-5'>
@@ -59,7 +62,7 @@ export const TopBar = () => {
       </div>
       {isNotification && <NotificationModal/>}
       {isCreateBoard && <CreateBoardModal onStateChange={handleOnStateChange}/>}
-      {isCreateBoardModal && <CreateBoard/>}
+      {isCreateBoardModal && <CreateBoard handleCreateModalClose={handleCreateModalClose}/>}
     </div>
   )
 }

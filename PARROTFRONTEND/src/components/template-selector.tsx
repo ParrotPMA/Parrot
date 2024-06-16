@@ -1,18 +1,14 @@
-import kanbanImage from '../assets/images/kanban.jpg';
 
 interface TemplateSelectorProps {
   height?: string;
   width?: string;
   boardImage?: string;
 }
-let image = kanbanImage;
 export const TemplateSelector: React.FC<TemplateSelectorProps> = ({ 
-  width=48,
-  height=24,
-  boardImage=image
+  boardImage
  }) => {
   return (
-    <div className={`relative w-${width} h-${height}`}>
+    <div className={`relative w-16 h-10`}>
         <div
           className="relative flex justify-between w-full h-full bg-cover bg-center p-2 mt-4 rounded-sm shadow-lg transition-all duration-300 group hover:cursor-pointer"
           style={{ backgroundImage: `url(${boardImage})` }}
