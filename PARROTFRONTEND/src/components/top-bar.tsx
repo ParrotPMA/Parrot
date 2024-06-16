@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import trello from '../assets/images/trello.png';
 import { DropDown } from './dropdown';
-import SearchBar from './search-bar';
+import InputBar from './input-bar';
 import { Button } from './button';
 import bell from '../assets/images/bell.png';
 import info from '../assets/images/info.png';
@@ -52,7 +52,7 @@ export const TopBar = () => {
         <Button className='w-20 font-normal h-8 ml-4' title='Create' onStateChange={handleCreateBoard}/>
       </div>
       <div className='flex items-center space-x-4'>
-        <SearchBar onSearch={handleSearch}/>
+        <InputBar onSearch={handleSearch}/>
         <Button isIconButton image1={bell} onStateChange={handleNotification} className='px-1'/>
         <Button isIconButton image1={info} className='px-1'/>
         <Button isIconButton image1={user} className='px-1'/>
