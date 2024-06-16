@@ -1,18 +1,20 @@
 import React, { useState, ChangeEvent } from 'react';
 
 interface SearchBarProps {
-  onSearch: (query: string) => void;
+  onSearch?: (query: string) => void;
   className?: string
+  isValue?: (data: boolean) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const InputBar: React.FC<SearchBarProps> = ({ onSearch, className, isValue }) => {
   const [query, setQuery] = useState('');
 
 //   TODO: update when backend api is ready
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
     setQuery(newQuery);
-    onSearch(newQuery);
+    onSearch && onSearch(newQuery);
+    newQuery && isValue ? isValue(true) : isValue && isValue(false);
   };
 
   return (
@@ -22,10 +24,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         value={query}
         onChange={handleInputChange}
         placeholder="Search"
-        className="pl-4 border border-[#D9D9D9] rounded-md h-9 focus:outline-none focus:ring-gray-500"
+        className={`pl-4 border border-[#D9D9D9] rounded-md h-9 focus:outline-none focus:ring-gray-500 ${className}`}
       />
     </div>
   );
 };
 
-export default SearchBar;
+export default InputBar;
