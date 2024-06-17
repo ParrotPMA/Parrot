@@ -6,7 +6,7 @@ import InteractiveColumn from "./InteractiveColumn";
 
 export const CustomKanban = () => {
   return (
-    <div className="h-screen w-full bg-neutral-900 text-neutral-50">
+    <div className="h-screen w-full bg-inherit text-black overflow-hidden">
       <Board />
     </div>
   );
@@ -16,7 +16,7 @@ const Board = () => {
   const [cards, setCards] = useState<Card[]>(DEFAULT_CARDS);
   const data_columns = DEFAULT_COLUMNS(cards, setCards);
   return (
-    <div className="flex h-full w-full gap-3 overflow-scroll p-12">
+    <div className="flex h-full w-full gap-3 overflow-x-auto p-12">
       {data_columns.map((column, index) => (
         <InteractiveColumn
           key={index}

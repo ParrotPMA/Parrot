@@ -105,7 +105,7 @@ const InteractiveColumn = ({
   const filteredCards = cards.filter((c: Card) => c.column === column);
 
   return (
-    <div className="w-56 shrink-0">
+    <div className="w-56 shrink-0 ">
       <div className="mb-3 flex items-center justify-between">
         <h3 className={`font-medium ${headingColor}`}>{title}</h3>
         <span className="rounded text-sm text-neutral-400">

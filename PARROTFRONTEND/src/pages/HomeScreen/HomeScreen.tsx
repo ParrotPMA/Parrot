@@ -6,8 +6,10 @@ interface HomeScreenProps {
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ id }) => {
   return (
-    <div className="flex flex-row h-screen w-full justify-center text-neutral-50 items-center bg-neutral-900">
-      <text className="text-lg font-extrabold ">{id}</text>
+    <div className="flex p-5 flex-col gap-4 h-screen w-full justify-center text-neutral-50 items-center bg-neutral-900">
+      <div>
+        <text className="text-lg font-extrabold ">Title: {id}</text>
+      </div>
       <div>
         <CustomKanban />
       </div>
