@@ -18,12 +18,14 @@ const [image, setImage] = useState("");
 const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 const [isInputQuery, setIsInputQuery] = useState("");
 const [isClosed, setIsClosed] = useState(false);
+const [boardTitleDisappeared, setBoardTitleDisappeared] = useState(false);
 const { addItem } = useItemsStore();
 
 // TODO: Fix Create button enable or disable
 
 useEffect(() => {
   isInputQuery ? setIsButtonEnabled(true) : setIsButtonEnabled(false);
+  isInputQuery ? setBoardTitleDisappeared(true) : setBoardTitleDisappeared(false);
 }, [isInputQuery])
 
 const handleImage = (index: string) => {
@@ -81,10 +83,12 @@ const handleClose = () => {
               <span className="text-red-500">*</span>
             </div>
             <InputBar className="w-full rounded-sm border-2 mt-1" isValue={setIsInputQuery}/>
-            <div className="flex">
-              <span className="pr-2">👋</span>
-              <p className="text-sm font-medium self-center">Board title is required</p>
-            </div>
+            {boardTitleDisappeared && 
+              <div className="flex">
+                <span className="pr-2">👋</span>
+                <p className="text-sm font-medium self-center">Board title is required</p>
+              </div>
+            }
           </div>
           <div className="pt-2" onClick={isButtonEnabled ? handleObject : undefined}>
             <Button title="Create" className="h-9" enabled={isButtonEnabled}/>
